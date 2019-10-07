@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Mark Attendance</title>
+</head>
+<body>
+<div class="jumbotron text-center bg-dark text-white"><h1>Mark Attendance</h1></div>
+<div class="container bg-info w-100 main-content">
+    <form method="post" action="addMember.php">
+        <div class="form-row">
+            <div class="col-12 col-md-4 my-3">
+                <input type="text" class="form-control" placeholder="Enrollment No" name="enroll" required>
+            </div>
+            <div class="col-12 col-md-4 my-3">
+                <input type="Name" class="form-control" placeholder="Name" name="name" required>
+            </div>
+        </div><br>
+        <div class="form-row">
+            <div class="col-6 col-md-3">
+                <select id="inputsem" class="form-control" name="sem" required>
+                    <option selected>First Semester</option>
+                    <option>Second Semester</option>
+                    <option>Third Semester</option>
+                    <option>Fourth Semester</option>
+                    <option>Fifth Semester</option>
+                    <option>Sixth Semester</option>
+                    <option>Seventh Semester</option>
+                    <option>Eight Semester</option>
+                </select>
+            </div>
+            <div class="col-6 col-md-3">
+                <input type="Date" class="form-control" placeholder="Date" name="date" required>
+            </div>
+            <div class="col-6 col-md-3">
+                <select id="inputclass" class="form-control" name="class" required>
+                    <option selected>First</option>
+                    <option>Second </option>
+                    <option>Third</option>
+                    <option>Fourth</option>
+                    <option>Fifth</option>
+                    <option>Sixth</option>
+                    <option>Seventh</option>
+                </select>
+            </div>
+            <div class="col-6 col-md-3 my-auto">
+                <button type="submit" class="btn btn-success my-2">Mark</button>
+            </div>
+        </div><br>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

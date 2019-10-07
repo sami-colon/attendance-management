@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Add Members</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        input{
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        .form-row, .form-control, .container{
+            border-radius: 12px;
+        }
+        #subject{
+            transition: all ease-in 1.618s;
+            display: none;
+        }
+        #loader{
+            position: absolute;
+            top: 48%;
+            left: 48%;
+            z-index: -999;
+        }
+    </style>
+</head>
+<body>
+<div class="jumbotron text-center bg-dark text-white"><h1>Register User</h1></div>
+<img id="loader" src="./images/loader.gif">
+<div class="container bg-info w-100 main-content">
+    <form>
+        <div class="form-row">
+            <div class="col-12 col-md-4 ml-auto">
+                <input type="text" class="form-control" placeholder="First name" required name="fname" id="fname">
+            </div>
+            <div class="col-12 col-md-4 mr-auto">
+                <input type="text" class="form-control" placeholder="Last name" required name="lname" id="lname">
+            </div>
+        </div><br>
+        <div class="form-row">
+            <div class="col-12 col-md-4 ml-auto">
+                <input type="text" class="form-control" placeholder="Enrollment No" required name="enroll" id="idno">
+            </div>
+            <div class="col-12 col-md-4 mr-auto">
+                <input type="password" class="form-control" placeholder="Password" required name="pass" id="password">
+            </div>
+        </div><br>
+        <div class="form-row">
+            <div class="col-5">
+                <select id="inputrole" class="form-control" name="role" required>
+                    <option value="student" selected>Student</option>
+                    <option value="teacher">Teacher</option>
+                </select>
+            </div>
+            <div class="col-5">
+                <select id="semester" class="form-control" name="class" required>
+                    <option value="1" selected>First Semester</option>
+                    <option value="2">Second Semester</option>
+                    <option value="3">Third Semester</option>
+                    <option value="4">Fourth Semester</option>
+                    <option value="5">Fifth Semester</option>
+                    <option value="6">Sixth Semester</option>
+                    <option value="7">Seventh Semester</option>
+                    <option value="8">Eight Semester</option>
+                </select>
+            </div>
+            <div class="col-12 col-sm-2 ">
+                <button type="submit" class="btn btn-success my-2" id="button">Register</button>
+            </div>
+            <div class="col-4 m-auto">
+                <select id="subject" class="form-control">
+                    <option value="physics" selected>Physics</option>
+                    <option value="m1">Mathematics 1</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="dbms">DBMS</option>
+                    <option value="oopm">OOPM</option>
+                    <option value="cn">CN</option>
+                </select>
+            </div>
+        </div><br>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        if(! (localStorage.getItem('status') === "loggedin" && localStorage.getItem('person') === "admin")){
+            alert('Not Logged In! Try again');
+            window.location.href = "./index.html";
+        }
+        $(document).ajaxStart(function(){
+            // Show image container
+            $("#loader").show(function () {
+                $("#loader").css('z-index','999999');
+            });
+        });
+        $(document).ajaxComplete(function(){
+            // Hide image container
+            $("#loader").hide(function () {
+                $("#loader").css('z-index','0');
+            });
+        });
+        function addMember(json_data, loc){
+            $.ajax({
+                url: loc,
+                type: "POST",
+                crossDomain: true,
+                data: json_data,
+                dataType: "json",
+                success:function(result){
+                    if(result['error'] === "false")
+                    {
+                        alert(result['result']);
+                        //window.location.href = "./addMember.html";
+                    }
+                    else
+                    {
+                        alert(result['result']);
+                    }
+                }
+            });
+        }
+        $('#inputrole').on('change', function () {
+            if($('#inputrole').val() === 'teacher') {
+                $('#subject').css('display', 'block');
+            }
+            else if($('#inputrole').val() === 'student') {
+                $('#subject').css('display', 'none');
+            }
+        });
+        $('#button').on('click', function (event) {
+            event.preventDefault();
+            let json_data = {};
+            let loc = "";
+            if($('#inputrole').val() === 'teacher')
+            {
+                loc = "https://neweradevelopers.com/attendance/add_teacher.php";
+                json_data = {
+                    firstname: $('#fname').val(),
+                    lastname: $('#lname').val(),
+                    id : $('#idno').val(),
+                    password: $('#password').val(),
+                    subject: $('#subject').val(),
+                    semester: $('#semester').val()
+                };
+                addMember(json_data, loc);
+            }
+            else if($('#inputrole').val() === 'student')
+            {
+                loc = "https://neweradevelopers.com/attendance/add_student.php";
+                json_data = {
+                    firstname: $('#fname').val(),
+                    lastname: $('#lname').val(),
+                    id : $('#idno').val(),
+                    password: $('#password').val(),
+                    semester: $('#semester').val()
+                };
+                addMember(json_data, loc);
+            }
+        });
+    });
+</script>
+</body>
+</html>
