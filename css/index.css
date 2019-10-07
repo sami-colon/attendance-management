@@ -10,3 +10,8 @@
     top: 48%;
     left: 48%;
 }
+body{
+    background-image: url("../images/bg-image-1.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+}

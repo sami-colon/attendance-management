@@ -4,3 +4,8 @@
     left: 48%;
     z-index: -999999;
 }
+body{
+    background-image: url("../images/bg-image-1.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+}

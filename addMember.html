@@ -31,13 +31,13 @@
             </div>
         </div><br>
         <div class="form-row">
-            <div class="col-5">
+            <div class="col-6">
                 <select id="inputrole" class="form-control" name="role" required>
                     <option value="student" selected>Student</option>
                     <option value="teacher">Teacher</option>
                 </select>
             </div>
-            <div class="col-5">
+            <div class="col-6">
                 <select id="semester" class="form-control" name="class" required>
                     <option value="1" selected>First Semester</option>
                     <option value="2">Second Semester</option>
@@ -49,10 +49,7 @@
                     <option value="8">Eight Semester</option>
                 </select>
             </div>
-            <div class="col-12 col-sm-2 ">
-                <button type="submit" class="btn btn-success my-2" id="button">Register</button>
-            </div>
-            <div class="col-4 m-auto">
+            <div class="col-6 mr-auto my-3">
                 <select id="subject" class="form-control">
                     <option value="physics" selected>Physics</option>
                     <option value="m1">Mathematics 1</option>
@@ -62,10 +59,15 @@
                     <option value="cn">CN</option>
                 </select>
             </div>
-        </div><br>
+        </div>
+        <div class="form-row">
+            <div class="col-12 col-sm-2 m-auto">
+                <button type="submit" class="btn btn-success my-2" id="button">Register</button>
+            </div>
+        </div>
     </form>
 </div>
-<div class="jumbotron text-center text-white" style="background-color: white;">
+<div class="container py-3 my-3 text-center">
     <a class="btn btn-primary" type="button" id="logout">LogouT</a>
 </div>
 
