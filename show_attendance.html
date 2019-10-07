@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Show Attendance</title>
+    <link rel="stylesheet" href="css/show_attendance.css">
 </head>
 <body>
 <div class="jumbotron text-center text-white bg-dark"><h1>Show Attendance</h1></div>
+<img id="loader" src="./images/loader.gif">
 <br>
 <div class="container">
     <div class="row">
         <div class="col-4">
-            <select id="filterby" class="form-control bg-info text-white" name="filterby">
+            <select id="filterby" class="form-control bg-info text-white">
                 <option selected>All</option>
-                <option>Subject</option>
-                <option>Date</option>
-                <option>Status</option>
+                <option value="subject">Subject</option>
+                <option value="date">Date</option>
+                <option value="status">Status</option>
             </select>
         </div>
     </div>
@@ -32,36 +34,16 @@
                 <th>Subject</th>
             </tr>
         </thead>
-        <tbody class="bg-info text-white">
-            <tr>
-                <td>29/08/1998</td>
-                <td>Third</td>
-                <td>Present</td>
-                <td>Life</td>
-            </tr>
-            <tr>
-                <td>29/08/1998</td>
-                <td>Third</td>
-                <td>Present</td>
-                <td>Life</td>
-            </tr>
-            <tr>
-                <td>29/08/1998</td>
-                <td>Third</td>
-                <td>Present</td>
-                <td>Life</td>
-            </tr>
-            <tr>
-                <td>29/08/1998</td>
-                <td>Third</td>
-                <td>Present</td>
-                <td>Life</td>
-            </tr>
+        <tbody class="bg-info" id="tbody">
         </tbody>
     </table>
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<div class="jumbotron text-center text-white" style="background-color: white;">
+    <a class="btn btn-primary" type="button" id="logout">LogouT</a>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="js/show_attendance.js"></script>
 </body>
 </html>

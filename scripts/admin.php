@@ -22,7 +22,7 @@ $query = "SELECT `session` FROM `admin` WHERE username = '$username' and passwor
 $result = mysqli_query($conn, $query);
 if(mysqli_num_rows($result) == 1)
 {
-    if($result == 1)
+    if($result == "true")
     {
         $response = array();
 	    $response['error'] = "true";
@@ -30,7 +30,7 @@ if(mysqli_num_rows($result) == 1)
 	    echo json_encode($response);
 	    die();
     }
-    $query = "UPDATE `admin` SET `session`= 1 WHERE username = '$username'";
+    $query = "UPDATE `admin` SET `session`= 'true' WHERE username = '$username'";
     $result = mysqli_query($conn, $query);
     $response = array();
 	$response['error'] = "false";

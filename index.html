@@ -5,20 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Attendance Management</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
-        .card-head, .card, .card-body {
-            border-radius: 12px;
-        }
-        #loader{
-            position: absolute;
-            top: 48%;
-            left: 48%;
-        }
-    </style>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 <div class="jumbotron"></div>
@@ -27,7 +14,7 @@
     <div class="row">
         <div class="col col-md-4 ml-auto mr-auto">
             <div class="card">
-                <h3 class="card-head bg-secondary text-white text-center my-0">Teacher</h3>
+                <h3 class="card-head bg-secondary text-white text-center my-0">Attendance Management</h3>
                 <div class="card-body bg-info text-white">
                     <form id="formm"> <!-- add php script here -->
                     <div class="row w-100">
@@ -59,69 +46,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script>
-    $(document).ready(function () {
-        $(document).ajaxStart(function(){
-            // Show image container
-            $("#loader").show(function () {
-                $("#loader").css('z-index','999999');
-            });
-        });
-        $(document).ajaxComplete(function(){
-            // Hide image container
-            $("#loader").hide(function () {
-                $("#loader").css('z-index','0');
-            });
-        });
-        function login(loc, person, redirect_loc){
-            $.ajax({
-                url: loc,
-                type: "POST",
-                crossDomain: true,
-                data: $('#formm').serialize(),
-                dataType: "json",
-                success:function(result){
-                    if(result['error'] === "false")
-                    {
-                        localStorage.setItem("status", "loggedin");
-                        localStorage.setItem("person", person);
-                        alert(result['result']);
-                        window.location.href = redirect_loc;
-                    }
-                    else
-                    {
-                        alert(result['result']);
-                    }
-                }
-            });
-        }
-        $('#button').on('click', function (event) {
-            event.preventDefault();
-            var loc;// = "https://neweradevelopers.com/attendance/admin.php";
-            if($('#inputrole').val() === 'admin')
-            {
-                if(localStorage.getItem("status") === "loggedin")
-                {
-                    alert('Logging into Previous Session!');
-                    if(localStorage.getItem("person") === "admin")
-                        window.location.href = "./addMember.html";
-                    if(localStorage.getItem("person") === "admin")
-                        window.location.href = "./show_attendance.html";
-                    if(localStorage.getItem("person") === "admin")
-                        window.location.href = "./mark_attendance.html";
-                }
-                else{
-                    loc = "https://neweradevelopers.com/attendance/admin.php";
-                    login(loc, $('#inputrole').val(), "./addMember.html");
-                }
-            }
-            else
-            {
-                console.log("Else");
-            }
-        });
-
-    });
-</script>
+<script src="js/index.js"></script>
 </body>
 </html>

@@ -1,0 +1,21 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+input{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.form-row, .form-control, .container{
+    border-radius: 12px;
+}
+#subject{
+    transition: all ease-in 1.618s;
+    display: none;
+}
+#loader{
+    position: absolute;
+    top: 48%;
+    left: 48%;
+    z-index: -999;
+}
